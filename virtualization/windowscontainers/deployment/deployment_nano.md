@@ -98,12 +98,12 @@ PS C:\> Copy-Item $WindowsMedia\NanoServer\Convert-WindowsImage.ps1 c:\nano
 
 PS C:\> Copy-Item $WindowsMedia\NanoServer\NanoServerImageGenerator.psm1 c:\nano
 ```
-Run the following to create a Nano Server virtual hard drive. The `-Containers` parameter indicates that the container package is installed, and the `-Compute` parameter takes care of the Hyper-V package. Hyper-V is only required if using Hyper-V containers.
+Run the following to create a Nano Server virtual hard drive. The `-Containers` parameter indicates that the container package is installed, and the `-Compute` parameter takes care of the Hyper-V package. Hyper-V is only required if using Hyper-V containers. The `-Language` parameter is required if you are running the command from a different language locale.
 
 ```powershell
 PS C:\> Import-Module C:\nano\NanoServerImageGenerator.psm1
 
-PS C:\> New-NanoServerImage -MediaPath $WindowsMedia -BasePath c:\nano -TargetPath C:\nano\NanoContainer.vhdx -MaxSize 10GB -GuestDrivers -ReverseForwarders -Compute -Containers
+PS C:\> New-NanoServerImage -MediaPath $WindowsMedia -BasePath c:\nano -TargetPath C:\nano\NanoContainer.vhdx -MaxSize 10GB -GuestDrivers -ReverseForwarders -Compute -Containers -Language en-us
 ```
 When completed, create a virtual machine from the `NanoContainer.vhdx` file. This virtual machine will be running the Nano Server OS, and optional packages.
 
